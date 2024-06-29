@@ -2,17 +2,16 @@ from sklearn.metrics import f1_score, recall_score, precision_score, confusion_m
 import torch
 
 
-def calculate_metrics(model, data_loader, device):
-    model.eval()
+def calc_acc_metrics(model, data_loader, device):
     all_labels = []
     all_predictions = []
-    with torch.no_grad():
-        for batch, label in data_loader:
-            batch, label = batch.to(device), label.to(device)
-            outputs = model(batch)
-            _, predicted_labels = torch.max(outputs, 1)
-            all_labels.extend(label.cpu().numpy())
-            all_predictions.extend(predicted_labels.cpu().numpy())
+
+    for batch, label in data_loader:
+        batch, label = batch.to(device), label.to(device)
+        outputs = model(batch)
+        _, predicted_labels = torch.max(outputs, 1)
+        all_labels.extend(label.cpu().numpy())
+        all_predictions.extend(predicted_labels.cpu().numpy())
 
     f1 = f1_score(all_labels, all_predictions, average='binary')
     recall = recall_score(all_labels, all_predictions, average='binary')

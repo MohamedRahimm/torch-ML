@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import ConfusionMatrixDisplay
 
 
-def plot_metrics(train_losses, valid_losses, f1_scores, recalls, precisions, confusion_mat):
+def plot_metrics(train_losses, valid_losses, train_accs, valid_accs, confusion_mat):
     epochs = range(1, len(train_losses) + 1)
 
     # Plot train and validation losses
@@ -15,14 +15,13 @@ def plot_metrics(train_losses, valid_losses, f1_scores, recalls, precisions, con
     plt.ylabel('Loss')
     plt.legend()
 
-    # Plot F1 Score, Recall, and Precision
+    # Plot train and validation accuracy
     plt.subplot(1, 3, 2)
-    plt.plot(epochs, f1_scores, 'g', label='F1 Score')
-    plt.plot(epochs, recalls, 'c', label='Recall')
-    plt.plot(epochs, precisions, 'm', label='Precision')
-    plt.title('F1 Score, Recall, and Precision')
+    plt.plot(epochs, train_accs, 'b', label='Training accuracy')
+    plt.plot(epochs, valid_accs, 'r', label='Validation accuracy')
+    plt.title('Training and Validation Accuracy')
     plt.xlabel('Epochs')
-    plt.ylabel('Metrics')
+    plt.ylabel('Accuracy')
     plt.legend()
 
     # Plot confusion matrix
