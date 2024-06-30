@@ -1,4 +1,4 @@
-# [IMDB DATASET](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)Review Sentiment Analysis Model
+# [IMDB DATASET](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews) Sentiment Analysis Model
 
 ## Project Overview
 
@@ -8,8 +8,9 @@ negative based on their content.
 
 ## Tokenization
 
-A custom Byte-Pair Encoding (BPE) tokenizer is implemented for this project,
-located in the `tokenizer` directory. BPE was chosen for its ability to handle
+A custom Byte-Pair Encoding (BPE) tokenizer located in the `tokenizer` directory
+has been implemented for this project, enabling reduced model training time and
+optimized vocabulary size. BPE was chosen for its ability to handle
 out-of-vocabulary words effectively, ensuring no unknown tokens in this dataset.
 
 ## Helper Functions
